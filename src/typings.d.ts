@@ -5,7 +5,7 @@ declare module 'react-select' {
     value: string;
   };
 
-  interface SelectProps<T extends OptionTypeBase = OptionTypeBase> {
+  interface SelectProps<T extends OptionTypeBase> {
     styles?: any; // Define the type for custom styles
     id: string;
     value: SelectOption | null;
@@ -13,7 +13,7 @@ declare module 'react-select' {
     onChange: (newValue: OptionType, actionMeta: any) => void;
   }
 
-  export default function Select<T extends OptionTypeBase = OptionTypeBase>(
+  export default function Select<T extends OptionTypeBase>(
     props: SelectProps<T>
   ): JSX.Element;
 }
@@ -25,7 +25,7 @@ declare module 'react-bootstrap-table-next' {
   export interface ColumnDescription<T> {
     dataField: keyof T;
     text: string;
-    // Add more properties as needed
+    sort?:boolean
   }
 
   export interface BootstrapTableProps<T> {
@@ -34,7 +34,6 @@ declare module 'react-bootstrap-table-next' {
     columns: ColumnDescription<T>[];
     noDataIndication?: ReactNode;
     pagination?: PaginationOptions; 
-    // Add more properties as needed
   }
 
   const BootstrapTable: ComponentType<BootstrapTableProps<any>>;

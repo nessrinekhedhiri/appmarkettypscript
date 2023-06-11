@@ -27,6 +27,7 @@ export const columnsTicker = [
   {
     dataField: 'symbol',
     text: 'Symbol',
+    
   },
   {
     dataField: 'askPrice',

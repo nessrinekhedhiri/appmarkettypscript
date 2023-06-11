@@ -1,4 +1,4 @@
-import MarketDataComponent from "./component/dataComponent";
+import MarketDataComponent from "./components/DataComponent";
 
 function App() {
   return ( 

@@ -5,19 +5,9 @@ import BootstrapTable from 'react-bootstrap-table-next';
 import paginationFactory, { PaginationOptions } from 'react-bootstrap-table2-paginator';
 import { Form, FormGroup, Label, Button, Row, Col, Card, CardBody, CardHeader } from 'reactstrap';
 import { Options, columnsTrades, columnsTicker, customStyles, customTotal } from '../constant/constant';
+import { CurrencyOption, TickerData, TradeData } from ".";
 
-interface CurrencyOption {
-  value: string;
-  label: string;
-}
 
-interface TickerData {
-  [key: string]: any;
-}
-
-interface TradeData {
-  [key: string]: any;
-}
 
 const MarketDataComponent: React.FC = () => {
   const [selectedPair, setSelectedPair] = useState<string>('');
@@ -63,9 +53,8 @@ const MarketDataComponent: React.FC = () => {
       });
   };
 
-  const renderNoDataIndication = () => {
-    return <div>No data available</div>;
-  };
+  const renderNoDataIndication = () =>  <div>No data available</div>;
+  
 
   const handleSortOptionChange = (selectedOption: string) => {
     setSortOption(selectedOption);
@@ -128,7 +117,7 @@ const MarketDataComponent: React.FC = () => {
                   id="currencyPair"
                   value={currencyOption.find((option) => option.value === selectedPair)}
                   options={currencyOption}
-                  onChange={(newValue, { action }) => {
+                  onChange={(newValue, { action }) :void => {
                     if (action === 'select-option') {
                       setSelectedPair(newValue.value);
                     }
@@ -185,7 +174,7 @@ const MarketDataComponent: React.FC = () => {
               keyField="id"
               data={sortedTradesData}
               columns={columnsTrades}
-              noDataIndication="Table is Empty"
+              noDataIndication={renderNoDataIndication()}
               pagination={paginationFactory(options)}
             />
           </div>
